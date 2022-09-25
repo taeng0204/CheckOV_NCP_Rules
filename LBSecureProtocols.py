@@ -13,13 +13,12 @@ class LBSecureProtocols(BaseResourceCheck):
         super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources, guideline=guideline)
 
     def scan_resource_conf(self, conf):
-        if 'protocol' in conf.keys():
-          protocol = conf['protocol'][0]
-          if protocol == 'HTTPS' or protocol == 'TLS':
-            if 'tls_min_version_type' in conf.keys():
-              TLSVersion = conf['tls_min_version_type'][0]
-              if TLSVersion == 'TLSV12': #TLS12 is vulnerable
-                return CheckResult.PASSED
+        protocol = conf['protocol'][0]
+        if protocol == 'HTTPS' or protocol == 'TLS':
+          if 'tls_min_version_type' in conf.keys():
+            TLSVersion = conf['tls_min_version_type'][0]
+            if TLSVersion == 'TLSV12': #TLS12 is vulnerable
+              return CheckResult.PASSED
         return CheckResult.FAILED
 
 
