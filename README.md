@@ -9,7 +9,7 @@ BoB11_Project
     loadbalancer는 안전한 프로토콜만을 사용하는가?
     
 - Resource : [VPC] ncloud_lb_listener
-    - Argument : tls_vin_version_type ← 얘가 TLSV12이어야 함.
+    - Argument : tls_min_version_type ← 얘가 TLSV12이어야 함.
 
 ## Custom Rule : NCP
 
@@ -31,9 +31,9 @@ class LBSecureProtocols(BaseResourceCheck):
         if 'protocol' in conf.keys():
           protocol = conf['protocol'][0]
           if protocol == 'HTTPS' or protocol == 'TLS':
-            if 'tls_vin_version_type' in conf.keys():
-              TLSVersion = conf['tls_vin_version_type'][0]
-              if TLSVersion == 'TLSV12': #TLS12 is chwee yack
+            if 'tls_min_version_type' in conf.keys():
+              TLSVersion = conf['tls_min_version_type'][0]
+              if TLSVersion == 'TLSV12': #TLS12 is vulnerable
                 return CheckResult.PASSED
         return CheckResult.FAILED
 
@@ -48,7 +48,7 @@ scanner = LBSecureProtocols()
 resource "ncloud_lb_listener" "listener" {
     load_balancer_no = ncloud_lb.lb.id
     protocol = "HTTPS"
-    tls_vin_version_type = "TLSV12"
+    tls_min_version_type = "TLSV12"
     port = 80
     target_group_no = ncloud_lb_target_group.tg.id
 }
@@ -78,7 +78,7 @@ resource "ncloud_lb_listener" "listener" {
 resource "ncloud_lb_listener" "listener" {
     load_balancer_no = ncloud_lb.lb.id
     protocol = "TLS"
-    tls_vin_version_type = "TLSV10"
+    tls_min_version_type = "TLSV10"
     port = 80
     target_group_no = ncloud_lb_target_group.tg.id
 }

@@ -16,9 +16,9 @@ class LBSecureProtocols(BaseResourceCheck):
         if 'protocol' in conf.keys():
           protocol = conf['protocol'][0]
           if protocol == 'HTTPS' or protocol == 'TLS':
-            if 'tls_vin_version_type' in conf.keys():
-              TLSVersion = conf['tls_vin_version_type'][0]
-              if TLSVersion == 'TLSV12': #TLS12 is chwee yack
+            if 'tls_min_version_type' in conf.keys():
+              TLSVersion = conf['tls_min_version_type'][0]
+              if TLSVersion == 'TLSV12': #TLS12 is vulnerable
                 return CheckResult.PASSED
         return CheckResult.FAILED
 
