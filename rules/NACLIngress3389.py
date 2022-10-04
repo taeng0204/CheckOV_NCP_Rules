@@ -1,4 +1,4 @@
-from rules.NACLIngressCheck import NACLIngressCheck
+from checkov.terraform.checks.resource.ncp.NACLIngressCheck import NACLIngressCheck
 
 
 class NACLIngress3389(NACLIngressCheck):
