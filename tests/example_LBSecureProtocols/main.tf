@@ -1,7 +1,7 @@
 resource "ncloud_lb_listener" "pass" {
     load_balancer_no = ncloud_lb.lb.id
     protocol = "HTTPS"
-    tls_vin_version_type = "TLSV12"
+    tls_min_version_type = "TLSV12"
     port = 80
     target_group_no = ncloud_lb_target_group.tg.id
 }
@@ -9,7 +9,7 @@ resource "ncloud_lb_listener" "pass" {
 resource "ncloud_lb_listener" "pass1" {
     load_balancer_no = ncloud_lb.lb.id
     protocol = "TLS"
-    tls_vin_version_type = "TLSV12"
+    tls_min_version_type = "TLSV12"
     port = 80
     target_group_no = ncloud_lb_target_group.tg.id
 }

@@ -78,6 +78,6 @@ resource "ncloud_network_acl_rule" "fail2" {
     protocol    = "TCP"
     rule_action = "ALLOW"
     ip_block    = "0.0.0.0/0"
-    port_range  = "3380-3300"
+    port_range  = "3380-3400"
   }
 }

@@ -24,7 +24,7 @@ class NACLIngressCheck(BaseResourceCheck):
                   return CheckResult.FAILED
                 elif port.find('-'):
                   portRange = list(map(int, port.split("-")))
-                  if portRange[0] <= self.port <= portRange[1]:
+                  if portRange[0] <= self.port <= portRange[-1]:
                     return CheckResult.FAILED
 
         return CheckResult.PASSED
