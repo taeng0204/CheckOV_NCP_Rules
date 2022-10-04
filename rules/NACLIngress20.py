@@ -1,7 +1,7 @@
-from NACLIngressCheck import NACLIngressCheck
+from rules.NACLIngressCheck import NACLIngressCheck
 
 
-class NACLIngress20(CheckPortIP):
+class NACLIngress20(NACLIngressCheck):
     def __init__(self):
         super().__init__(check_id="CKV_NCP_230", port=20)
 

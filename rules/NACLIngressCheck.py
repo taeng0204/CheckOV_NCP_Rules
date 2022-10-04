@@ -8,7 +8,7 @@ class NACLIngressCheck(BaseResourceCheck):
         id = check_id
         supported_resources = ['ncloud_network_acl_rule']
 
-        categories = [CheckCategories.BACKUP_AND_RECOVERY]
+        categories = [CheckCategories.NETWORKING]
         guideline = "You should Ensure no NACL allow ingress from 0.0.0.0:0 to port %d" % port
         super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources, guideline=guideline)
         self.port = port

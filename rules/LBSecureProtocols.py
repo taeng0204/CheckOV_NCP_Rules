@@ -8,7 +8,7 @@ class LBSecureProtocols(BaseResourceCheck):
         id = "CKV_NCP_213"
         supported_resources = ['ncloud_lb_listener']
 
-        categories = [CheckCategories.BACKUP_AND_RECOVERY]
+        categories = [CheckCategories.NETWORKING]
         guideline = "You should Ensure ELB Policy uses only secure protocols"
         super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources, guideline=guideline)
 
@@ -22,4 +22,4 @@ class LBSecureProtocols(BaseResourceCheck):
         return CheckResult.FAILED
 
 
-scanner = LBSecureProtocols()
+check = LBSecureProtocols()
