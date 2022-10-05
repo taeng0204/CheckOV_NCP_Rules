@@ -10,8 +10,7 @@ class LBSecureProtocols(BaseResourceCheck):
 
         categories = [CheckCategories.NETWORKING]
         guideline = "You should Ensure ELB Policy uses only secure protocols"
-        super().__init__(name=name, id=id, categories=categories,
-                         supported_resources=supported_resources, guideline=guideline)
+        super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources, guideline=guideline)
 
     def scan_resource_conf(self, conf):
         protocol = conf['protocol'][0]
